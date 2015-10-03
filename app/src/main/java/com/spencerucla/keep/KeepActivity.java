@@ -2,6 +2,7 @@ package com.spencerucla.keep;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,9 @@ public class KeepActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
             case R.id.action_add_note:
+                Intent intent = new Intent(this, AddNoteActivity.class);
+                startActivity(intent);
+                Log.d(TAG, "add note");
                 return true;
             case R.id.action_search:
                 return true;
