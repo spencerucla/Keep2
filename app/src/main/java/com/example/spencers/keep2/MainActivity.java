@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "Keep MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
