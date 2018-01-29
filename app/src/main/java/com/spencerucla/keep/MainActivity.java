@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_todo);
 
-        mReminderAdapter = new ReminderAdapter(getApplicationContext(),
-                R.layout.reminder, mReminders);
+        mReminderAdapter = new ReminderAdapter(this, R.layout.reminder, mReminders);
         listView.setAdapter(mReminderAdapter);
     }
 
