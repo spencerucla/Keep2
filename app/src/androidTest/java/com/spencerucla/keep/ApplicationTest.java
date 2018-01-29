@@ -1,4 +1,4 @@
-package com.example.spencers.keep2;
+package com.spencerucla.keep;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.example.spencers.keep2;
+package com.spencerucla.keep;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
