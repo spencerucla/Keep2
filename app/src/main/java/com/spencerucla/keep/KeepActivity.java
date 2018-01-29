@@ -1,5 +1,6 @@
 package com.spencerucla.keep;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
@@ -12,24 +13,15 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "Keep MainActivity";
-    private ListView listView;
-    // TODO: make persistent
-    private ArrayList<Reminder> mReminders = new ArrayList<Reminder>();
-    ReminderAdapter mReminderAdapter;
+public class KeepActivity extends AppCompatActivity {
+    private static final String TAG = "KeepActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_keep);
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-        listView = (ListView) findViewById(R.id.list_todo);
-
-        mReminderAdapter = new ReminderAdapter(this, R.layout.reminder, mReminders);
-        listView.setAdapter(mReminderAdapter);
     }
 
     @Override
@@ -57,15 +49,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean addReminder(View view) {
-        EditText editText = (EditText) findViewById(R.id.add_todo_edit_text);
-        // TODO: use CalendarContract.Reminders
-        Reminder reminder = new Reminder(editText.getText().toString());
-        mReminders.add(reminder);
-        Log.d(TAG, "add reminder: " + reminder.getText());
-        mReminderAdapter.notifyDataSetChanged();
-        editText.getText().clear();
-        // TODO: then close keyboard?
-        return true;
+    public void showTodoList(View view) {
+        Intent intent = new Intent(this, TodoActivity.class);
+        intent.putExtra(TodoActivity.EXTRA_TODO_LIST, -1);
+        startActivity(intent);
     }
 }

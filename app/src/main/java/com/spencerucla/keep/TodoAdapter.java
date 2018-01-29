@@ -10,18 +10,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.spencerucla.keep.model.Todo;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by spencers on 10/3/15.
  */
-public class ReminderAdapter extends ArrayAdapter<Reminder> {
-    public static final String TAG = "ReminderAdapter";
-    private ArrayList<Reminder> objects;
+public class TodoAdapter extends ArrayAdapter<Todo> {
+    public static final String TAG = "TodoAdapter";
+    private List<Todo> mObjects;
 
-    public ReminderAdapter(Context context, int textViewResourceId, ArrayList<Reminder> objects) {
+    public TodoAdapter(Context context, int textViewResourceId, List<Todo> objects) {
         super(context, textViewResourceId, objects);
-        this.objects = objects;
+        mObjects = objects;
     }
 
     @Override
@@ -33,9 +36,9 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
             view = inflater.inflate(R.layout.reminder, parent, false);
         }
 
-        Reminder reminder = objects.get(position);
+        Todo todo = mObjects.get(position);
 
-        if (reminder != null) {
+        if (todo != null) {
             TextView textView = (TextView) view.findViewById(R.id.reminder_text);
             // TODO: date = reminder.getDate(); if (date == null) { display add_alert ImageButton; } else { display date; }
             ImageButton imageButton = (ImageButton) view.findViewById(R.id.add_alert);
@@ -44,8 +47,8 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
             ImageButton addAlertButton = (ImageButton) view.findViewById(R.id.add_alert);
             reorderButton.setOnTouchListener(reorderListener);
             addAlertButton.setOnClickListener(addAlertListener);
-            if (textView != null){
-                textView.setText(reminder.getText());
+            if (textView != null) {
+                textView.setText(todo.getText());
             }
         }
 
