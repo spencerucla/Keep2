@@ -19,7 +19,33 @@ android {
     }
 }
 
+def dbflow_version = "4.2.4"
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
+
+    // DBFlow
+    // if Java use this. If using Kotlin do NOT use this.
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    // use kapt for kotlin apt if you're a Kotlin user
+    // kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    /* Optional DBFlow extensions
+    // sql-cipher database encryption (optional)
+    compile "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
+    compile "net.zetetic:android-database-sqlcipher:${sqlcipher_version}@aar"
+    // kotlin extensions
+    compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}"
+    // RXJava 1 support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx:${dbflow_version}"
+    // RXJava 1 Kotlin Extensions Support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx-kotlinextensions:${dbflow_version}"
+    // RXJava 2 support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
+    // RXJava 2 Kotlin Extensions Support
+    compile "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}"
+    */
 }
