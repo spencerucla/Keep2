@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+// apply plugin: 'kotlin-kapt' // required for Kotlin
 
 android {
     compileSdkVersion 23
