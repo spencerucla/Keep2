@@ -48,7 +48,7 @@ public class TodoAdapter extends ArrayAdapter<Todo> {
             reorderButton.setOnTouchListener(reorderListener);
             addAlertButton.setOnClickListener(addAlertListener);
             if (textView != null) {
-                textView.setText(todo.getText());
+                textView.setText(todo.text);
             }
         }
 

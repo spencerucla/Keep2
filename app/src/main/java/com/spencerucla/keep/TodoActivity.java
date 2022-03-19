@@ -1,8 +1,6 @@
 package com.spencerucla.keep;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,9 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.spencerucla.keep.model.Todo;
-import com.spencerucla.keep.model.TodoList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +20,9 @@ public class TodoActivity extends AppCompatActivity {
 
     public static final String EXTRA_TODO_LIST = "extra_todo_list";
 
-    private TodoList mTodoList;
+    private TodoListDao mTodoListDao;
     private ListView mListView;
-    private List<Todo> mTodos = new ArrayList<Todo>();
+    private List<Todo> mTodos = new ArrayList<>();
     private TodoAdapter mTodoAdapter;
 
     @Override
@@ -32,14 +30,17 @@ public class TodoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
         Intent intent = getIntent();
         int todoListId = -1;
         if (intent != null) {
             todoListId = intent.getIntExtra(EXTRA_TODO_LIST, -1);
         }
         Log.d(TAG, "extra id = " + todoListId);
+
+        KeepDatabase database = KeepDatabase.getDatabase(getApplicationContext());
+        mTodoListDao = database.todoListDao();
+
+        /* FIXME
         if (todoListId >= 0) {
             mTodoList = TodoList.getInstance(todoListId);
         } else {
@@ -49,6 +50,7 @@ public class TodoActivity extends AppCompatActivity {
             mTodoList.insert();
         }
         mTodos = mTodoList.getTodos();
+        */
 
         mListView = (ListView) findViewById(R.id.list_todo);
 
@@ -86,12 +88,14 @@ public class TodoActivity extends AppCompatActivity {
         String text = editText.getText().toString();
         Log.d(TAG, "addTodo: " + text);
 
+        /* FIXME
         Todo todo = new Todo();
         todo.setText(text);
         todo.insert();
 
         mTodos.add(todo);
         mTodoAdapter.notifyDataSetChanged();
+        */
 
         editText.getText().clear();
         // TODO: then close keyboard?

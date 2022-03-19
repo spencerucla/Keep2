@@ -1,17 +1,11 @@
 package com.spencerucla.keep;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
-
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class KeepActivity extends AppCompatActivity {
     private static final String TAG = "KeepActivity";
@@ -20,8 +14,6 @@ public class KeepActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keep);
-
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
     }
 
     @Override

@@ -1,24 +1,18 @@
 package com.spencerucla.keep.model;
 
-import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.PrimaryKey;
-import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-@Table(database = KeepDatabase.class)
-public class Note extends BaseModel {
+@Entity(tableName = "notes")
+public class Note {
+    @PrimaryKey(autoGenerate = true)
+    public long id;
 
-    @PrimaryKey(autoincrement = true)
-    long id;
+    public int order;
 
-    @Column
-    int order;
+    public String title;
 
-    @Column
-    String title;
-
-    @Column
-    String Text;
+    public String text;
 
     // TODO: datetime for reminder
 }
